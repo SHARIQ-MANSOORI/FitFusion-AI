@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import api from '../services/api';
+import FormattedAIOutput from '../components/FormattedAIOutput';
 
 const Workout = () => {
   const [goal, setGoal] = useState('Muscle Gain');
@@ -119,7 +120,7 @@ const Workout = () => {
               {copied ? '✓ Copied to clipboard' : '📋 Copy Plan'}
             </button>
           </div>
-          <pre className="ai-plan" style={{ whiteSpace: 'pre-wrap' }}>{plan}</pre>
+          <FormattedAIOutput content={plan} showRawToggle />
         </div>
       )}
 

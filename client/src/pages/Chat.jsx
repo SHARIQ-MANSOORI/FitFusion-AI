@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import api from '../services/api';
+import FormattedAIOutput from '../components/FormattedAIOutput';
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -93,7 +94,7 @@ const Chat = () => {
               >
                 <strong>{msg.role === 'user' ? 'You' : 'Coach'}: </strong>
                 {msg.role === 'coach' ? (
-                  <pre className="ai-plan" style={{ whiteSpace: 'pre-wrap' }}>{msg.text}</pre>
+                  <FormattedAIOutput content={msg.text} compact />
                 ) : (
                   <span>{msg.text}</span>
                 )}
