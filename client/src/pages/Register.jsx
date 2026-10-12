@@ -27,48 +27,60 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p className="error-text">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <div className="auth-header">
+          <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⚡</div>
+          <h2>Register</h2>
+          <p>Create your FitFusion AI account and kickstart your fitness journey.</p>
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <small>At least 8 characters, with a letter and a number</small>
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Register'}
-        </button>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
+
+        {error && <p className="error-text">⚠️ {error}</p>}
+
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Alex Johnson"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="alex@example.com"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="At least 8 characters"
+              required
+            />
+            <small>At least 8 characters, with a letter and a number</small>
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Creating account...' : 'Register'}
+          </button>
+        </form>
+
+        <p className="auth-footer">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
   );
 };
